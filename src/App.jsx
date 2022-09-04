@@ -15,6 +15,11 @@ function allNumbers() {
   return numberArray
 }
 
+function reRoll() {
+  setDieState(allNumbers())
+}
+
+
 const diceArray = dieState.map(die => <Die value={die} />)
 
   return (
@@ -29,7 +34,7 @@ const diceArray = dieState.map(die => <Die value={die} />)
         </div>
         <div className="button-container">
 
-          <button>button</button>
+          <button className="roll" onClick={reRoll}>Roll</button>
         </div>
       </div>
     </div>
