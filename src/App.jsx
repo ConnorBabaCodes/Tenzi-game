@@ -5,7 +5,7 @@ import Die from './assets/components/Die'
 
 function App() {
   
-
+const [dieState, setDieState] = useState(allNumbers())
 
 function allNumbers() {
   let numberArray = []
@@ -15,7 +15,7 @@ function allNumbers() {
   return numberArray
 }
 
-
+const diceArray = dieState.map(die => <Die value={die} />)
 
   return (
     <div className="App">
@@ -25,16 +25,7 @@ function allNumbers() {
         <p>Roll until all dice are the same. Click each die to freeze it at it's current value between rolls.</p>
         </div>
         <div className="die-container">
-          <Die value={3}/>
-          <Die value={3}/>
-          <Die value={3}/>
-          <Die value={3}/>
-          <Die value={3}/>
-          <Die value={3}/>
-          <Die value={3}/>
-          <Die value={3}/>
-          <Die value={3}/>
-          <Die value={3}/>
+         {diceArray}
         </div>
         <div className="button-container">
 
