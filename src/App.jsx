@@ -13,6 +13,7 @@ function allNumbers() {
     const numberObject = {isHeld: false, id: i}
     numberObject.value = Math.floor(Math.random() * 7)
     numberArray.push(numberObject)
+    console.log(numberObject)
   }
   return numberArray
 }
@@ -22,7 +23,7 @@ function reRoll() {
 }
 
 
-const diceArray = dieState.map(die => <Die key={die.id} value={die.value} />)
+const diceArray = dieState.map(die => <Die key={die.id} value={die.value} isHeld={die.isHeld}/>)
 
   return (
     <div className="App">
