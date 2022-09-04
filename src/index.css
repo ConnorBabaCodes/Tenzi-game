@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+    font-family: karla, sans-serif;
+}
+
+body {
+    margin: 0;
+    background-color: #0B2434
+}
+
+.main-container {
+    background-color: white;
+    width: 40%;
+    height: 500px;
+    margin: auto;
+    margin-top:  10%;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.title {
+    padding-top: 50px;
+}
+
+.test {
+    width: 20px;
+    background-color: yellow;
+}
