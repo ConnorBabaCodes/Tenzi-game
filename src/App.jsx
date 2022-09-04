@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import Die from './Die'
+import Die from './assets/components/Die'
 
 
 function App() {
@@ -16,9 +16,15 @@ function App() {
         <div className="die-container">
           <Die />
           <Die />
-
+          <Die />
+          <Die />
+          <Die />
+          <Die />
         </div>
-        <div className="button-container"></div>
+        <div className="button-container">
+
+          <button>button</button>
+        </div>
       </div>
     </div>
   )

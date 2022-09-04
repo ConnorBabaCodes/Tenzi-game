@@ -26,3 +26,8 @@ body {
     width: 20px;
     background-color: yellow;
 }
+
+.die-container {
+    width: 100px;
+    height: 100px;
+}
