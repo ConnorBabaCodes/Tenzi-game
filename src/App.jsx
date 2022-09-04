@@ -10,7 +10,9 @@ const [dieState, setDieState] = useState(allNumbers())
 function allNumbers() {
   let numberArray = []
   for(let i = 0; i < 10; i++) {
-    numberArray.push(Math.floor(Math.random() * 7))
+    const numberObject = {isHeld: false, id: i}
+    numberObject.value = Math.floor(Math.random() * 7)
+    numberArray.push(numberObject)
   }
   return numberArray
 }
@@ -20,7 +22,7 @@ function reRoll() {
 }
 
 
-const diceArray = dieState.map(die => <Die value={die} />)
+const diceArray = dieState.map(die => <Die key={die.id} value={die.value} />)
 
   return (
     <div className="App">
