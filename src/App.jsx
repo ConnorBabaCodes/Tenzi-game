@@ -6,6 +6,17 @@ import Die from './assets/components/Die'
 function App() {
   
 
+
+function allNumbers() {
+  let numberArray = []
+  for(let i = 0; i < 10; i++) {
+    numberArray.push(Math.floor(Math.random() * 7))
+  }
+  return numberArray
+}
+
+
+
   return (
     <div className="App">
       <div className="main-container">
@@ -14,12 +25,16 @@ function App() {
         <p>Roll until all dice are the same. Click each die to freeze it at it's current value between rolls.</p>
         </div>
         <div className="die-container">
-          <Die />
-          <Die />
-          <Die />
-          <Die />
-          <Die />
-          <Die />
+          <Die value={3}/>
+          <Die value={3}/>
+          <Die value={3}/>
+          <Die value={3}/>
+          <Die value={3}/>
+          <Die value={3}/>
+          <Die value={3}/>
+          <Die value={3}/>
+          <Die value={3}/>
+          <Die value={3}/>
         </div>
         <div className="button-container">
 
