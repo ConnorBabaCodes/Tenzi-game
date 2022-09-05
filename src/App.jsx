@@ -1,11 +1,24 @@
 import { useState } from 'react'
-
+import {useEffect} from 'react'
 import Die from './assets/components/Die'
 
 
 function App() {
   
 const [dieState, setDieState] = useState(allNumbers())
+const [tenzi, setTenzi] = useState(false)
+
+
+useEffect(() => {
+  const winCondition1 = dieState.every(die => die.isHeld)
+  if (winCondition1) {
+    const win = dieState[0].value
+    
+    const WinCondition2 = dieState.every(die => die.value === win)
+    setTenzi(true)
+}
+}, [dieState])
+
 
 function allNumbers() {
   let numberArray = []
@@ -13,13 +26,15 @@ function allNumbers() {
     const numberObject = {isHeld: false, id: i}
     numberObject.value = Math.floor(Math.random() * 7)
     numberArray.push(numberObject)
-    console.log(numberObject)
+    
   }
   return numberArray
 }
 
 function reRoll() {
-  setDieState(allNumbers())
+  setDieState(oldDice => oldDice.map(die => {
+    return die.isHeld ? die: {...die, value: Math.floor(Math.random() *7)}
+  }))
 }
 
 function holdDice(id) {
@@ -45,7 +60,7 @@ const diceArray = dieState.map(die => <Die key={die.id} value={die.value} isHeld
         </div>
         <div className="button-container">
 
-          <button className="roll" onClick={reRoll}>Roll</button>
+          <button className="roll" onClick={reRoll}>{tenzi ? "New Game" : "Roll"}</button>
         </div>
       </div>
     </div>
