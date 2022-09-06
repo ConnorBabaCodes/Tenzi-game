@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import {useEffect} from 'react'
 import Die from './assets/components/Die'
+import Confetti from 'react-confetti'
+import Counter from './assets/components/Counter'
 
 
 function App() {
@@ -31,6 +33,9 @@ function allNumbers() {
   return numberArray
 }
 
+
+
+
 function reRoll() {
   setDieState(oldDice => oldDice.map(die => {
     return die.isHeld ? die: {...die, value: Math.floor(Math.random() *7)}
@@ -45,22 +50,30 @@ function holdDice(id) {
   }))
 }
 
+function reset() {
+  setTenzi(false)
+  setDieState(allNumbers)
+  
+}
+
 
 const diceArray = dieState.map(die => <Die key={die.id} value={die.value} isHeld={die.isHeld} holdDice={() => holdDice(die.id)}/>)
 
   return (
     <div className="App">
+      {tenzi && <Confetti />}
       <div className="main-container">
         <div className="text-container">
         <h1 className="title">Tenzi</h1>
         <p>Roll until all dice are the same. Click each die to freeze it at it's current value between rolls.</p>
+       <Counter />
         </div>
         <div className="die-container">
          {diceArray}
         </div>
         <div className="button-container">
 
-          <button className="roll" onClick={reRoll}>{tenzi ? "New Game" : "Roll"}</button>
+          <button className="roll" onClick={tenzi ? reset : reRoll}>{tenzi ? "New Game" : "Roll"}</button>
         </div>
       </div>
     </div>
